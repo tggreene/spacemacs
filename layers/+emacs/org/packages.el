@@ -40,8 +40,7 @@
     (ox-epub :toggle org-enable-epub-support)
     (ox-twbs :toggle org-enable-bootstrap-support)
     ;; use a for of ox-gfm to fix index generation
-    (ox-gfm :location (recipe :fetcher github :repo "syl20bnr/ox-gfm")
-            :toggle org-enable-github-support)
+    (ox-gfm :toggle org-enable-github-support)
     (org-re-reveal :toggle org-enable-reveal-js-support)
     persp-mode
     (ox-hugo :toggle org-enable-hugo-support)
@@ -787,7 +786,9 @@ Headline^^            Visit entry^^               Filter^^                    Da
 
 (defun org/pre-init-ox-gfm ()
   (spacemacs|use-package-add-hook org :post-config (require 'ox-gfm)))
-(defun org/init-ox-gfm ())
+
+(defun org/init-ox-gfm ()
+  (use-package ox-gfm :after ox))
 
 (defun org/pre-init-org-re-reveal ()
   (spacemacs|use-package-add-hook org :post-config (require 'org-re-reveal)))
